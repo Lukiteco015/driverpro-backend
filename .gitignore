@@ -1,0 +1,18 @@
+# Dependências
+node_modules/
+
+# Builds e Dist
+dist/
+build/
+
+# Variáveis de Ambiente e Segredos
+.env
+src/config/firebase-key.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema
+.DS_Store

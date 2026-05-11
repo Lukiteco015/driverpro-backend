@@ -5,6 +5,13 @@ import connectDB from './config/database';
 import userRoutes from './routes/userRoutes';
 
 
+import authRoutes from './routes/Auth';
+import driverRoutes from './routes/Driver';
+import rideRoutes from './routes/Ride';
+import vehicleRoutes from './routes/Vehicle';
+import unavailablePeriodRoutes from './routes/UnavailablePeriod';
+import notificationRoutes from './routes/Notification';
+
 dotenv.config();
 const app: Application = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +21,17 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.use('/users', userRoutes);
+
+app.use('/auth', authRoutes);
+app.use('/api/drivers', driverRoutes);
+app.use('/api/rides', rideRoutes);
+app.use('/api/vehicles', vehicleRoutes);
+app.use('/api/unavailable-periods', unavailablePeriodRoutes);
+app.use('/api/notifications', notificationRoutes);
+
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({ status: 'ok' });
+});
 
 app.listen(PORT, () => {
   console.log(`
